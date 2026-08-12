@@ -1,0 +1,29 @@
+=======================================================================
+ MLD (Modele Logique de Donnees) — Touche pas au klaxon
+ Notation : cle primaire soulignee, #champ = cle etrangere
+=======================================================================
+
+AGENCE (id_agence, ville)
+    id_agence : cle primaire
+
+UTILISATEUR (id_utilisateur, nom, prenom, email, telephone, mot_de_passe, role, actif)
+    id_utilisateur : cle primaire
+
+TRAJET (id_trajet, date_heure_depart, date_heure_arrivee, nb_places_total,
+        nb_places_dispo, #id_agence_depart, #id_agence_arrivee, #id_utilisateur)
+    id_trajet          : cle primaire
+    #id_agence_depart  : cle etrangere -> AGENCE.id_agence
+    #id_agence_arrivee : cle etrangere -> AGENCE.id_agence
+    #id_utilisateur    : cle etrangere -> UTILISATEUR.id_utilisateur
+
+-----------------------------------------------------------------------
+Regles de gestion issues des associations du MCD :
+-----------------------------------------------------------------------
+- Un TRAJET reference exactement une AGENCE de depart et une AGENCE
+  d'arrivee (cardinalites 1,1 cote TRAJET pour DEPART et ARRIVEE),
+  ce qui se traduit par deux cles etrangeres distinctes vers la meme
+  table AGENCE dans la table TRAJET.
+- Un TRAJET reference exactement un UTILISATEUR (son auteur, qui sert
+  aussi de contact), cardinalite 1,1 cote TRAJET pour PROPOSER.
+- Une AGENCE peut etre le depart et/ou l'arrivee de 0 a n trajets.
+- Un UTILISATEUR peut proposer 0 a n trajets.
