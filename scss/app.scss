@@ -1,0 +1,78 @@
+$primary:   #0b5ed7;
+$secondary: #6c757d;
+$success:   #198754;
+$danger:    #dc3545;
+$warning:   #ffc107;
+$info:      #0dcaf0;
+$light:     #f8f9fa;
+$dark:      #212529;
+
+$font-family-sans-serif: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$border-radius: .5rem;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.klaxon-panel {
+    border: 1px solid $gray-400;
+    border-radius: 2rem;
+    background: #fff;
+    padding: .85rem 1.5rem;
+}
+
+.klaxon-brand {
+    font-style: italic;
+    font-weight: 600;
+    color: $dark;
+    text-decoration: none;
+
+    &:hover {
+        color: $dark;
+    }
+}
+
+.klaxon-flash {
+    background-color: $gray-200;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    color: $body-color;
+}
+
+.table-klaxon {
+    thead th {
+        background-color: $dark;
+        color: #fff;
+        border: none;
+        white-space: nowrap;
+    }
+
+    td {
+        vertical-align: middle;
+    }
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    padding: .2rem .3rem;
+    line-height: 1;
+
+    &:hover {
+        opacity: .7;
+    }
+}
+
+footer {
+    flex-shrink: 0;
+    color: $gray-600;
+}
