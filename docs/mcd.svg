@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720" font-family="Segoe UI, Arial, sans-serif">
+    <rect width="1000" height="720" fill="#ffffff"/>
+    <text x="500" y="30" text-anchor="middle" font-size="20" font-weight="bold">MCD — Touche pas au klaxon</text>
+
+    <!-- ===================== Entite AGENCE ===================== -->
+    <g>
+        <rect x="60" y="60" width="220" height="90" fill="#ffffff" stroke="#212529" stroke-width="2"/>
+        <line x1="60" y1="92" x2="280" y2="92" stroke="#212529" stroke-width="2"/>
+        <text x="170" y="80" text-anchor="middle" font-weight="bold" font-size="15">AGENCE</text>
+        <text x="72" y="112" font-size="13" text-decoration="underline">id_agence</text>
+        <text x="72" y="132" font-size="13">ville</text>
+    </g>
+
+    <!-- ===================== Entite UTILISATEUR ===================== -->
+    <g>
+        <rect x="700" y="60" width="240" height="210" fill="#ffffff" stroke="#212529" stroke-width="2"/>
+        <line x1="700" y1="92" x2="940" y2="92" stroke="#212529" stroke-width="2"/>
+        <text x="820" y="80" text-anchor="middle" font-weight="bold" font-size="15">UTILISATEUR</text>
+        <text x="712" y="112" font-size="13" text-decoration="underline">id_utilisateur</text>
+        <text x="712" y="132" font-size="13">nom</text>
+        <text x="712" y="152" font-size="13">prenom</text>
+        <text x="712" y="172" font-size="13">email</text>
+        <text x="712" y="192" font-size="13">telephone</text>
+        <text x="712" y="212" font-size="13">mot_de_passe</text>
+        <text x="712" y="232" font-size="13">role</text>
+        <text x="712" y="252" font-size="13">actif</text>
+    </g>
+
+    <!-- ===================== Entite TRAJET ===================== -->
+    <g>
+        <rect x="360" y="530" width="280" height="150" fill="#ffffff" stroke="#212529" stroke-width="2"/>
+        <line x1="360" y1="562" x2="640" y2="562" stroke="#212529" stroke-width="2"/>
+        <text x="500" y="550" text-anchor="middle" font-weight="bold" font-size="15">TRAJET</text>
+        <text x="372" y="582" font-size="13" text-decoration="underline">id_trajet</text>
+        <text x="372" y="602" font-size="13">date_heure_depart</text>
+        <text x="372" y="622" font-size="13">date_heure_arrivee</text>
+        <text x="372" y="642" font-size="13">nb_places_total</text>
+        <text x="372" y="662" font-size="13">nb_places_dispo</text>
+    </g>
+
+    <!-- ===================== Association DEPART ===================== -->
+    <ellipse cx="150" cy="330" rx="75" ry="32" fill="#ffffff" stroke="#212529" stroke-width="2"/>
+    <text x="150" y="335" text-anchor="middle" font-weight="bold" font-size="13">DEPART</text>
+
+    <!-- ===================== Association ARRIVEE ===================== -->
+    <ellipse cx="340" cy="330" rx="75" ry="32" fill="#ffffff" stroke="#212529" stroke-width="2"/>
+    <text x="340" y="335" text-anchor="middle" font-weight="bold" font-size="13">ARRIVEE</text>
+
+    <!-- ===================== Association PROPOSER ===================== -->
+    <ellipse cx="700" cy="380" rx="80" ry="32" fill="#ffffff" stroke="#212529" stroke-width="2"/>
+    <text x="700" y="385" text-anchor="middle" font-weight="bold" font-size="13">PROPOSER</text>
+
+    <!-- ===================== Lignes AGENCE -> DEPART -> TRAJET ===================== -->
+    <line x1="150" y1="150" x2="150" y2="298" stroke="#212529" stroke-width="1.5"/>
+    <text x="158" y="200" font-size="13">0,n</text>
+
+    <line x1="180" y1="358" x2="440" y2="530" stroke="#212529" stroke-width="1.5"/>
+    <text x="230" y="420" font-size="13">1,1</text>
+
+    <!-- ===================== Lignes AGENCE -> ARRIVEE -> TRAJET ===================== -->
+    <line x1="240" y1="150" x2="330" y2="300" stroke="#212529" stroke-width="1.5"/>
+    <text x="270" y="200" font-size="13">0,n</text>
+
+    <line x1="380" y1="358" x2="480" y2="530" stroke="#212529" stroke-width="1.5"/>
+    <text x="440" y="450" font-size="13">1,1</text>
+
+    <!-- ===================== Lignes UTILISATEUR -> PROPOSER -> TRAJET ===================== -->
+    <line x1="800" y1="270" x2="740" y2="352" stroke="#212529" stroke-width="1.5"/>
+    <text x="775" y="300" font-size="13">0,n</text>
+
+    <line x1="660" y1="405" x2="560" y2="530" stroke="#212529" stroke-width="1.5"/>
+    <text x="610" y="470" font-size="13">1,1</text>
+
+    <!-- ===================== Legende ===================== -->
+    <g font-size="12" fill="#495057">
+        <text x="60" y="700">Lecture des cardinalites : cote entite = nb d'occurrences de l'association pour une occurrence de l'entite.</text>
+        <text x="60" y="716">Ex. AGENCE (0,n) -- DEPART -- (1,1) TRAJET : une agence est le depart de 0 a n trajets ; un trajet a exactement une agence de depart.</text>
+    </g>
+</svg>

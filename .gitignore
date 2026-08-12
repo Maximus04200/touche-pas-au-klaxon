@@ -1,0 +1,10 @@
+/vendor/
+/node_modules/
+/public/assets/css/*.css
+/public/assets/css/*.css.map
+/public/assets/js/bootstrap.bundle.min.js
+.env
+.phpunit.result.cache
+/.phpunit.cache/
+/.phpstan-cache/
+*.log
