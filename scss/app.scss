@@ -1,12 +1,10 @@
 // =====================================================================
-// Palette imposee par le cahier des charges (variables Bootstrap
-// surchargees en amont de l'import, pour que les futurs sites du
-// Comite d'entreprise puissent reutiliser ces memes variables avec
-// leurs propres couleurs).
-//
-// NOTE : la palette exacte est fournie en annexe visuelle du devoir,
-// non disponible ici. Les valeurs ci-dessous sont un placeholder
-// sobre a remplacer par les couleurs reelles avant rendu final.
+// Variables Bootstrap surchargees en amont de l'import (pour que les
+// futurs sites du Comite d'entreprise puissent reutiliser ces memes
+// variables avec leurs propres couleurs). Les visuels fournis en
+// annexe sont des maquettes fonctionnelles en niveaux de gris, sans
+// palette de couleurs imposee : le sobre noir/blanc ci-dessous suit
+// fidelement cette maquette.
 // =====================================================================
 
 $primary:   #0b5ed7;
@@ -30,26 +28,65 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #fff;
 }
 
 main {
     flex: 1 0 auto;
 }
 
-.navbar-brand {
-    font-weight: 600;
+// Bandeau arrondi (header et encarts), conforme aux maquettes fournies.
+.klaxon-panel {
+    border: 1px solid $gray-400;
+    border-radius: 2rem;
+    background: #fff;
+    padding: .85rem 1.5rem;
 }
 
-.trajet-card {
-    transition: box-shadow .15s ease-in-out;
+.klaxon-brand {
+    font-style: italic;
+    font-weight: 600;
+    color: $dark;
+    text-decoration: none;
 
     &:hover {
-        box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .1);
+        color: $dark;
+    }
+}
+
+.klaxon-flash {
+    background-color: $gray-200;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    color: $body-color;
+}
+
+// Tableaux de trajets/listes admin : en-tete sombre, lignes zebrees.
+.table-klaxon {
+    thead th {
+        background-color: $dark;
+        color: #fff;
+        border: none;
+        white-space: nowrap;
+    }
+
+    td {
+        vertical-align: middle;
+    }
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    padding: .2rem .3rem;
+    line-height: 1;
+
+    &:hover {
+        opacity: .7;
     }
 }
 
 footer {
-    background-color: $dark;
-    color: $light;
     flex-shrink: 0;
+    color: $gray-600;
 }

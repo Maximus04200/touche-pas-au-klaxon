@@ -64,10 +64,10 @@ mysql -u klaxon_app -p touche_pas_au_klaxon < database/schema.sql
 mysql -u klaxon_app -p touche_pas_au_klaxon < database/seed.sql
 ```
 
-> **Note** : `database/seed.sql` contient un jeu d'essai **fictif** (agences,
-> employes, trajets). L'export RH reel et la liste reelle des agences,
-> fournis en annexe du cahier des charges, doivent remplacer ces donnees
-> avant toute mise en production.
+> **Note** : les agences et les employes de `database/seed.sql` sont repris
+> de l'export RH fourni en annexe du cahier des charges. Seuls les mots de
+> passe (absents de cet export) et les trajets sont des donnees de
+> demonstration.
 
 ### 3. Configuration
 
@@ -88,10 +88,14 @@ Puis ouvrir <http://127.0.0.1:8000>.
 
 ## Comptes de demonstration
 
-| Role     | Email                   | Mot de passe   |
-|----------|--------------------------|----------------|
-| Admin    | `admin@klaxon.local`     | `Admin#2026`   |
-| Employe  | `j.dupont@klaxon.local`  | `Employe#2026` |
+| Role     | Email                          | Mot de passe   |
+|----------|----------------------------------|----------------|
+| Admin    | `admin@klaxon.local`             | `Admin#2026`   |
+| Employe  | `alexandre.martin@email.fr`      | `Employe#2026` |
+
+Le compte admin est un compte applicatif dedie (hors export RH). Les 20
+employes importes de l'annexe partagent tous le mot de passe `Employe#2026`
+(l'export RH ne fournit pas de mots de passe).
 
 ## Tests automatises
 
@@ -145,10 +149,11 @@ tests/Unit/        Tests PHPUnit
 - Script de creation des tables : [`database/schema.sql`](database/schema.sql)
 - Jeu d'essai : [`database/seed.sql`](database/seed.sql)
 
-## Limites connues / donnees a completer
+## Limites connues
 
-- La palette de couleurs Bootstrap (`scss/app.scss`) est un placeholder sobre :
-  la palette imposee par le cahier des charges est fournie en annexe visuelle
-  et n'etait pas disponible lors du developpement.
-- Le jeu d'essai (agences, utilisateurs, trajets) est fictif, a remplacer par
-  l'export RH reel fourni en annexe.
+- Les visuels fournis en annexe sont des maquettes fonctionnelles en niveaux
+  de gris (pas de palette de couleurs imposee) : l'interface suit fidelement
+  leur structure (bandeau arrondi, tableaux, icones d'action, message flash
+  neutre) avec une palette Bootstrap sobre.
+- Les trajets du jeu d'essai sont des donnees de demonstration ; les agences
+  et les employes proviennent de l'annexe fournie avec le devoir.

@@ -26,16 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const trajet = data.trajet;
 
                 body.innerHTML = `
-                    <dl class="row mb-0">
-                        <dt class="col-5">Contact</dt>
-                        <dd class="col-7">${escapeHtml(trajet.auteur_prenom)} ${escapeHtml(trajet.auteur_nom)}</dd>
-                        <dt class="col-5">Telephone</dt>
-                        <dd class="col-7">${escapeHtml(trajet.auteur_telephone)}</dd>
-                        <dt class="col-5">Email</dt>
-                        <dd class="col-7">${escapeHtml(trajet.auteur_email)}</dd>
-                        <dt class="col-5">Places totales</dt>
-                        <dd class="col-7">${escapeHtml(String(trajet.nb_places_total))}</dd>
-                    </dl>
+                    <p>Auteur : <strong>${escapeHtml(trajet.auteur_prenom)} ${escapeHtml(trajet.auteur_nom)}</strong></p>
+                    <p>Telephone : <strong>${escapeHtml(trajet.auteur_telephone)}</strong></p>
+                    <p>Email : <strong>${escapeHtml(trajet.auteur_email)}</strong></p>
+                    <p class="mb-0">Nombre total de places : <strong>${escapeHtml(String(trajet.nb_places_total))}</strong></p>
                 `;
             } catch (error) {
                 body.innerHTML = '<p class="text-danger mb-0">Impossible de charger les details.</p>';

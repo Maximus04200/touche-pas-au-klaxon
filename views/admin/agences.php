@@ -22,7 +22,7 @@ use App\Core\Csrf;
 </div>
 
 <div class="table-responsive">
-    <table class="table table-striped align-middle">
+    <table class="table table-klaxon align-middle">
         <thead>
             <tr>
                 <th>Ville</th>

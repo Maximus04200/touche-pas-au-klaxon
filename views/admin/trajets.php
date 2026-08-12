@@ -7,7 +7,7 @@ use App\Core\Csrf;
 <h1 class="h3 mb-4">Trajets</h1>
 
 <div class="table-responsive">
-    <table class="table table-striped align-middle">
+    <table class="table table-klaxon align-middle">
         <thead>
             <tr>
                 <th>Depart</th>
