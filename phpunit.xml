@@ -15,11 +15,6 @@
         </include>
     </source>
     <php>
-        <!--
-            La base de donnees utilisee par les tests est isolee de la base
-            de developpement (les identifiants de connexion restent ceux du
-            fichier .env : seul le nom de la base est surcharge ici).
-        -->
         <env name="DB_DATABASE" value="touche_pas_au_klaxon_test"/>
     </php>
 </phpunit>

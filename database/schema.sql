@@ -1,16 +1,3 @@
--- =====================================================================
--- Touche pas au klaxon — script de creation des tables
--- SGBD cible : MySQL 8+ / MariaDB 10.4+
---
--- Ce script ne cree/ne selectionne PAS la base de donnees : il est
--- concu pour etre rejoue sur n'importe quelle base (dev, test, ...)
--- deja selectionnee par l'appelant, par exemple :
---   mysql -u user -p nom_de_la_base < schema.sql
--- ---------------------------------------------------------------------
--- Table AGENCE
--- Les villes / implantations de l'entreprise entre lesquelles
--- les trajets sont proposes. Seul l'administrateur peut la modifier.
--- ---------------------------------------------------------------------
 DROP TABLE IF EXISTS trajet;
 DROP TABLE IF EXISTS agence;
 DROP TABLE IF EXISTS utilisateur;
@@ -22,29 +9,19 @@ CREATE TABLE agence (
     UNIQUE KEY uq_agence_ville (ville)
 ) ENGINE = InnoDB;
 
--- ---------------------------------------------------------------------
--- Table UTILISATEUR
--- Import du systeme RH : aucune creation/modification/suppression
--- d'utilisateur n'est prevue depuis l'application (hors mot de passe).
--- role : 'employe' ou 'admin'
--- ---------------------------------------------------------------------
 CREATE TABLE utilisateur (
     id_utilisateur  INT UNSIGNED    NOT NULL AUTO_INCREMENT,
     nom             VARCHAR(100)    NOT NULL,
     prenom          VARCHAR(100)    NOT NULL,
     email           VARCHAR(190)    NOT NULL,
     telephone       VARCHAR(20)     NOT NULL,
-    mot_de_passe    VARCHAR(255)    NOT NULL COMMENT 'hash password_hash()',
+    mot_de_passe    VARCHAR(255)    NOT NULL,
     role            ENUM('employe', 'admin') NOT NULL DEFAULT 'employe',
     actif           TINYINT(1)      NOT NULL DEFAULT 1,
     PRIMARY KEY (id_utilisateur),
     UNIQUE KEY uq_utilisateur_email (email)
 ) ENGINE = InnoDB;
 
--- ---------------------------------------------------------------------
--- Table TRAJET
--- id_utilisateur = auteur du trajet = personne a contacter.
--- ---------------------------------------------------------------------
 CREATE TABLE trajet (
     id_trajet           INT UNSIGNED    NOT NULL AUTO_INCREMENT,
     id_agence_depart    INT UNSIGNED    NOT NULL,

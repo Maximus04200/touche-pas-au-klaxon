@@ -1,12 +1,3 @@
-// =====================================================================
-// Variables Bootstrap surchargees en amont de l'import (pour que les
-// futurs sites du Comite d'entreprise puissent reutiliser ces memes
-// variables avec leurs propres couleurs). Les visuels fournis en
-// annexe sont des maquettes fonctionnelles en niveaux de gris, sans
-// palette de couleurs imposee : le sobre noir/blanc ci-dessous suit
-// fidelement cette maquette.
-// =====================================================================
-
 $primary:   #0b5ed7;
 $secondary: #6c757d;
 $success:   #198754;
@@ -21,9 +12,6 @@ $border-radius: .5rem;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-// ---------------------------------------------------------------------
-// Styles propres a l'application
-// ---------------------------------------------------------------------
 body {
     display: flex;
     min-height: 100vh;
@@ -35,7 +23,6 @@ main {
     flex: 1 0 auto;
 }
 
-// Bandeau arrondi (header et encarts), conforme aux maquettes fournies.
 .klaxon-panel {
     border: 1px solid $gray-400;
     border-radius: 2rem;
@@ -61,7 +48,6 @@ main {
     color: $body-color;
 }
 
-// Tableaux de trajets/listes admin : en-tete sombre, lignes zebrees.
 .table-klaxon {
     thead th {
         background-color: $dark;

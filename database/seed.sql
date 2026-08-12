@@ -1,18 +1,3 @@
--- =====================================================================
--- Touche pas au klaxon — jeu d'essai
---
--- Agences et utilisateurs repris tels quels de l'annexe fournie avec
--- le devoir (jeu-d-essais/agences.txt, jeu-d-essais/users.txt).
--- Les mots de passe n'etant pas fournis par l'export RH, un mot de
--- passe de demonstration commun est applique a tous les employes
--- importes (voir README.md pour les identifiants de connexion).
---
--- Comptes de demonstration :
---   Admin    : admin@klaxon.local          / Admin#2026
---   Employe  : alexandre.martin@email.fr   / Employe#2026
---   (les 19 autres employes importes partagent le meme mot de passe)
--- =====================================================================
-
 USE touche_pas_au_klaxon;
 
 SET FOREIGN_KEY_CHECKS = 0;
@@ -21,9 +6,6 @@ TRUNCATE TABLE utilisateur;
 TRUNCATE TABLE agence;
 SET FOREIGN_KEY_CHECKS = 1;
 
--- ---------------------------------------------------------------------
--- Agences (annexe : jeu-d-essais/agences.txt)
--- ---------------------------------------------------------------------
 INSERT INTO agence (id_agence, ville) VALUES
     (1,  'Paris'),
     (2,  'Lyon'),
@@ -38,14 +20,6 @@ INSERT INTO agence (id_agence, ville) VALUES
     (11, 'Rennes'),
     (12, 'Reims');
 
--- ---------------------------------------------------------------------
--- Utilisateurs
--- id_utilisateur = 1 : compte administrateur applicatif (hors export RH).
--- id_utilisateur = 2..21 : employes importes de l'annexe
--- (jeu-d-essais/users.txt), role 'employe'.
--- Hash bcrypt de "Admin#2026" et "Employe#2026" genere via
--- password_hash(..., PASSWORD_DEFAULT).
--- ---------------------------------------------------------------------
 INSERT INTO utilisateur
     (id_utilisateur, nom, prenom, email, telephone, mot_de_passe, role, actif)
 VALUES
@@ -92,16 +66,10 @@ VALUES
     (21, 'Henry',     'Arthur',    'arthur.henry@email.fr',     '0666554433',
          '$2y$10$6PEwhzTwHyQVcdXqKito1.neAo949DyH40K42Ot0/9DIDShZXqRDC', 'employe', 1);
 
--- ---------------------------------------------------------------------
--- Trajets
--- Dates calculees par rapport a NOW() pour que le jeu d'essai reste
--- valide quelle que soit la date de chargement du script.
--- ---------------------------------------------------------------------
 INSERT INTO trajet
     (id_agence_depart, id_agence_arrivee, date_heure_depart, date_heure_arrivee,
      nb_places_total, nb_places_dispo, id_utilisateur)
 VALUES
-    -- Trajets futurs avec places disponibles (doivent apparaitre, tries par date croissante)
     (1, 2,  DATE_ADD(NOW(), INTERVAL 1 DAY),  DATE_ADD(NOW(), INTERVAL 1 DAY) + INTERVAL 5 HOUR,  4, 2, 2),
     (2, 3,  DATE_ADD(NOW(), INTERVAL 2 DAY),  DATE_ADD(NOW(), INTERVAL 2 DAY) + INTERVAL 3 HOUR,  3, 1, 3),
     (1, 10, DATE_ADD(NOW(), INTERVAL 3 DAY),  DATE_ADD(NOW(), INTERVAL 3 DAY) + INTERVAL 2 HOUR,  4, 4, 4),
@@ -110,15 +78,7 @@ VALUES
     (7, 2,  DATE_ADD(NOW(), INTERVAL 6 DAY),  DATE_ADD(NOW(), INTERVAL 6 DAY) + INTERVAL 4 HOUR,  3, 3, 7),
     (5, 8,  DATE_ADD(NOW(), INTERVAL 8 DAY),  DATE_ADD(NOW(), INTERVAL 8 DAY) + INTERVAL 4 HOUR,  4, 2, 9),
     (11, 1, DATE_ADD(NOW(), INTERVAL 9 DAY),  DATE_ADD(NOW(), INTERVAL 9 DAY) + INTERVAL 4 HOUR,  3, 3, 12),
-
-    -- Trajet futur complet : ne doit PAS apparaitre sur la liste publique
     (3, 1, DATE_ADD(NOW(), INTERVAL 2 DAY),  DATE_ADD(NOW(), INTERVAL 2 DAY) + INTERVAL 3 HOUR,  2, 0, 8),
-
-    -- Trajet passe avec places dispo : ne doit PAS apparaitre (date depassee)
     (1, 3, DATE_SUB(NOW(), INTERVAL 5 DAY),  DATE_SUB(NOW(), INTERVAL 5 DAY) + INTERVAL 3 HOUR,  4, 2, 10),
-
-    -- Trajet avec une seule place restante (cas limite)
     (6, 1, DATE_ADD(NOW(), INTERVAL 7 DAY),  DATE_ADD(NOW(), INTERVAL 7 DAY) + INTERVAL 4 HOUR,  4, 1, 11),
-
-    -- Trajet propose par le compte de demonstration (pour tester modification/suppression par l'auteur)
     (1, 9, DATE_ADD(NOW(), INTERVAL 10 DAY), DATE_ADD(NOW(), INTERVAL 10 DAY) + INTERVAL 5 HOUR, 3, 2, 2);
