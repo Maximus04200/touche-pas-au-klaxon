@@ -1,0 +1,24 @@
+{
+  "name": "touche-pas-au-klaxon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "build:css": "sass scss/app.scss public/assets/css/app.css --style=compressed --no-source-map",
+    "watch:css": "sass --watch scss/app.scss:public/assets/css/app.css",
+    "build:js": "node -e \"require('fs').copyFileSync('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js','public/assets/js/bootstrap.bundle.min.js')\"",
+    "build": "npm run build:css && npm run build:js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "bootstrap": "^5.3.8",
+    "sass": "^1.102.0"
+  }
+}
